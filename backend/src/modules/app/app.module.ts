@@ -7,10 +7,14 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import configurations from "../../configurations";
 
 @Module({
-  imports: [ ConfigModule.forRoot({
+  imports: [
+    /*Настройки приложения через файл configurations/index.ts*/
+    ConfigModule.forRoot({
     isGlobal: true,
     load: [configurations]
-  }), SequelizeModule.forRootAsync({
+  }),
+      /*Настройки базы данных из файла configurations/index.ts*/
+    SequelizeModule.forRootAsync({
     imports: [ConfigModule],
     inject: [ConfigService],
     useFactory: (configService: ConfigService) => ({
@@ -25,6 +29,7 @@ import configurations from "../../configurations";
       modules: [],
     })
   }),
+    /*Подключение модуля User*/
     UserModule ],
   controllers: [AppController],
   providers: [AppService],
