@@ -6,4 +6,8 @@ export class UserService {
     getUsers() {
         return users;
     }
+
+    welcomeUser(userName : string) {
+        return `Welcome you - ${userName}`;
+    }
 }

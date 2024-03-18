@@ -3,11 +3,11 @@ import { UserService } from './user.service';
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService) {}
-    @Get()
+    @Get('welcome-user')
     welcomeUser() {
-        return this.userService.getUsers();
+        return this.userService.welcomeUser('Alex');
     }
-    @Get()
+    @Get('get-all-users')
     getUsers() {
         return this.userService.getUsers();
     }
