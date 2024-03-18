@@ -8,8 +8,6 @@ async function bootstrap() {
 
   /*Настройки приложения через файл configurations/index.ts*/
   const configService = app.get(ConfigService);
-  const port = configService.get('port')
-  await app.listen(port);
 
   /*Формирование документации через библиотеку Swagger*/
   const config = new DocumentBuilder()
@@ -20,5 +18,9 @@ async function bootstrap() {
       .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  /*Стандартные настройки подключения с измененным портом из файла configurations/index.ts*/
+  const port = configService.get('port')
+  await app.listen(port);
 }
 bootstrap();
