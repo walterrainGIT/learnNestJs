@@ -2,8 +2,8 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456](https://e7.pngegg.com/pngimages/308/345/png-clipart-industry-4-fourth-industrial-revolution-automation-business-infographic-text.png
-[circleci-url]: https://circleci.com/gh/nestjs/nest](https://nationalteam.worldskills.ru/team/sostav/evdokimov-vladislav-igorevich/
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
     <p align="center">
