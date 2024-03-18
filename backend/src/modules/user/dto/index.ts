@@ -1,5 +1,4 @@
-import {Column} from "sequelize-typescript";
-import {IsObject, IsString} from "class-validator";
+import { IsString } from "class-validator";
 
 /*Валидация данных, чтобы типы для записи в базу данных были правильные*/
 export class CreateUserDTO{
