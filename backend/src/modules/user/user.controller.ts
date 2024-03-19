@@ -1,16 +1,31 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Post, Patch, Delete, UseGuards, Req} from '@nestjs/common';
 import { UserService } from './user.service';
-import {CreateUserDTO} from "./dto";
+import {ApiResponse, ApiTags} from "@nestjs/swagger";
+import {CreateUserDTO, UpdateUserDTO} from "./dto";
+import {UserLoginDTO} from "../auth/dto";
+import {AuthUserResponse} from "../auth/response";
+import {JwtAusGuard} from "../../guards/jwtGuard";
+import {isEmail} from "class-validator";
+
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService) {}
-    @Get('get-all-users')
-    getUsers() {
-        return this.userService.getUser(0);
+
+    @ApiTags('API')
+    @ApiResponse({status: 200, type: UpdateUserDTO})
+    @UseGuards(JwtAusGuard)
+    @Patch('updateUser')
+    updateUser(@Body() dto: UpdateUserDTO, @Req() request): Promise<UpdateUserDTO> {
+        const user = request.user;
+        return this.userService.updateUser(user.email, dto);
     }
 
-    @Post('create-user')
-    createUsers(@Body() dto: CreateUserDTO){
-        return this.userService.createUser(dto);
+    @ApiTags('API')
+    @ApiResponse({status: 200, type: undefined})
+    @UseGuards(JwtAusGuard)
+    @Delete('deleteUser')
+    deleteUser(@Req() request) : Promise<boolean>{
+        const user = request.user;
+        return this.userService.deleteUser(user.email);
     }
 }
