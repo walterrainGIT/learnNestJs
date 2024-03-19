@@ -5,10 +5,14 @@ import {AppError} from "../../common/constant/error";
 import {UserLoginDTO} from "./dto";
 import * as bcrypt from "bcrypt"
 import {AuthUserResponse} from "./response";
+import {TokenService} from "../token/token.service";
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly userService: UserService) {}
+    constructor(
+        private readonly userService: UserService,
+        private readonly tokenService: TokenService,
+    ) {}
 
     async registerUsers(dto: CreateUserDTO) : Promise<CreateUserDTO> {
         //проверка существования пользователя и вывод ошибки из файла common/error
@@ -24,6 +28,8 @@ export class AuthService {
         //хэшируем пароль и проводим его проверку на соответствие email-password
         const validatePassword = await bcrypt.compare(dto.password, existUser.password);
         if(!validatePassword) throw new BadRequestException(AppError.WRONG_LOGIN_DATA);//выводим ошибку с кодом 400, BadRequest
-        return existUser;
+        //создаем токен и возвращаем данные пользователя
+        const token = await this.tokenService.generateJwtToken(dto.email);
+        return {...existUser, token};
     }
 }
