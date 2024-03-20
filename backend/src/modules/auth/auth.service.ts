@@ -4,8 +4,8 @@ import {CreateUserDTO} from "../user/dto";
 import {AppError} from "../../common/constant/error";
 import {UserLoginDTO} from "./dto";
 import * as bcrypt from "bcrypt"
-import {AuthUserResponse} from "./response";
 import {TokenService} from "../token/token.service";
+import {AuthUserResponse} from "./response";
 
 @Injectable()
 export class AuthService {
@@ -21,7 +21,7 @@ export class AuthService {
         return this.userService.createUser(dto);
     }
 
-    async loginUser(dto: UserLoginDTO) : Promise<any>{
+    async loginUser(dto: UserLoginDTO):Promise<AuthUserResponse> {
         //проверка существования пользователя
         const existUser = await this.userService.findUserByEmail(dto.email);//ищем пользователя по email
         if(!existUser) throw new BadRequestException(AppError.USER_NOT_EXIST);//выводим ошибку с кодом 400, BadRequest
