@@ -8,6 +8,8 @@ import configurations from "../../configurations";
 import {User} from "../user/models/user.model";
 import {AuthModule} from "../auth/auth.module";
 import {TokenModule} from "../token/token.module";
+import {WatchList} from "../watchlist/models/watchlist.model";
+import {WatchlistModule} from "../watchlist/watchlist.module";
 
 @Module({
   imports: [
@@ -29,11 +31,14 @@ import {TokenModule} from "../token/token.module";
       database: configService.get("dbName"),
       synchronize: true,
       autoLoadModels: true,
-      modules: [User],//перечисление модулей, в которых у нас будет работа с БД
+      modules: [User, WatchList],//перечисление моделей таблиц для создания в БД
     })
   }),
     /*Подключение модуля User*/
-    UserModule, AuthModule, TokenModule],
+    UserModule,
+    AuthModule,
+    TokenModule,
+    WatchlistModule],
   controllers: [AppController],
   providers: [AppService],
 })

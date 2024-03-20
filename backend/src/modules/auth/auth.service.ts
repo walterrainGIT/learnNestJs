@@ -21,20 +21,16 @@ export class AuthService {
         return this.userService.createUser(dto);
     }
 
-    async loginUser(dto: UserLoginDTO) : Promise<AuthUserResponse>{
+    async loginUser(dto: UserLoginDTO) : Promise<any>{
         //проверка существования пользователя
         const existUser = await this.userService.findUserByEmail(dto.email);//ищем пользователя по email
         if(!existUser) throw new BadRequestException(AppError.USER_NOT_EXIST);//выводим ошибку с кодом 400, BadRequest
         //хэшируем пароль и проводим его проверку на соответствие email-password
         const validatePassword = await bcrypt.compare(dto.password, existUser.password);
         if(!validatePassword) throw new BadRequestException(AppError.WRONG_LOGIN_DATA);//выводим ошибку с кодом 400, BadRequest
-        const userData = {
-            name: existUser.firstName,
-            email: existUser.email,
-        }
-        //создаем токен и возвращаем данные пользователя
-        const token = await this.tokenService.generateJwtToken(userData);
         const user = await this.userService.publicUser(dto.email);
-        return {...user, token};
+        //создаем токен и возвращаем данные пользователя
+        const token = await this.tokenService.generateJwtToken(user);
+        return {user, token};
     }
 }
