@@ -11,7 +11,7 @@ import {isEmail} from "class-validator";
 export class UserController {
     constructor(private readonly userService: UserService) {}
 
-    @ApiTags('API')
+    @ApiTags('API-user')
     @ApiResponse({status: 200, type: UpdateUserDTO})
     @UseGuards(JwtAusGuard)
     @Patch('updateUser')
@@ -20,8 +20,8 @@ export class UserController {
         return this.userService.updateUser(user.email, dto);
     }
 
-    @ApiTags('API')
-    @ApiResponse({status: 200, type: undefined})
+    @ApiTags('API-user')
+    @ApiResponse({status: 200})
     @UseGuards(JwtAusGuard)
     @Delete('deleteUser')
     deleteUser(@Req() request) : Promise<boolean>{
