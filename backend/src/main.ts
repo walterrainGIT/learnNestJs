@@ -16,7 +16,8 @@ async function bootstrap() {
       .setTitle('Documentation for Project LearnNestJS')
       .setDescription('API for LearnNestJS')
       .setVersion('1.0')
-      .addTag('API')
+      .addTag('API-user')
+      .addTag('API-watchList')
       .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
