@@ -15,13 +15,18 @@ export class AuthService {
     ) {}
 
     async registerUsers(dto: CreateUserDTO) : Promise<CreateUserDTO> {
+        try{
         //проверка существования пользователя и вывод ошибки из файла common/error
         const existUser = await this.userService.findUserByEmail(dto.email);
         if(existUser) throw new BadRequestException(AppError.USER_EXIST);//выводим ошибку с кодом 400, BadRequest
         return this.userService.createUser(dto);
+        }catch (e){
+            throw new Error(e);
+        }
     }
 
     async loginUser(dto: UserLoginDTO):Promise<AuthUserResponse> {
+        try{
         //проверка существования пользователя
         const existUser = await this.userService.findUserByEmail(dto.email);//ищем пользователя по email
         if(!existUser) throw new BadRequestException(AppError.USER_NOT_EXIST);//выводим ошибку с кодом 400, BadRequest
@@ -32,5 +37,8 @@ export class AuthService {
         //создаем токен и возвращаем данные пользователя
         const token = await this.tokenService.generateJwtToken(user);
         return {user, token};
+        }catch (e){
+            throw new Error(e);
+        }
     }
 }
