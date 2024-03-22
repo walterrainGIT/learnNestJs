@@ -3,18 +3,22 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalculatorComponent } from './calculator/calculator.component';
-import {FormsModule} from "@angular/forms";
+import {CalculatorModule} from "./calculator/calculator.module";
+import { NavigationComponent} from './components/navigation/navigation.component';
+import { EmptyRouteComponent } from './components/empty-route/empty-route.component';
+import { ObjectListComponent } from './object-list/component/object-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalculatorComponent
+    NavigationComponent,
+    EmptyRouteComponent,
+    ObjectListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    CalculatorModule
   ],
   providers: [
     provideClientHydration()
