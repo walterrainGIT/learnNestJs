@@ -6,14 +6,12 @@ import { AppComponent } from './app.component';
 import {CalculatorModule} from "./calculator/calculator.module";
 import { NavigationComponent} from './components/navigation/navigation.component';
 import { EmptyRouteComponent } from './components/empty-route/empty-route.component';
-import { ObjectListComponent } from './object-list/component/object-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     EmptyRouteComponent,
-    ObjectListComponent,
   ],
   imports: [
     BrowserModule,
