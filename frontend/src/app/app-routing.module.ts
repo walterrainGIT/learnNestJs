@@ -9,11 +9,13 @@ const routes: Routes = [
     component: CalculatorComponent
   },
   {
-    path: '',
-    redirectTo: 'calculator',
-    pathMatch: 'full',
+    path: '', redirectTo: 'calculator', pathMatch: 'full',
   },
   {
+    path: 'object-list',
+    loadChildren: () => import('./object-list/object-list.module').then((m) => m.ObjectListModule),
+  },
+ {
     path: '**',
     component: EmptyRouteComponent,
   }
