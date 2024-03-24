@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CalculatorComponent} from "./calculator/components/calculator.component";
 import {EmptyRouteComponent} from "./components/empty-route/empty-route.component";
-import {DirectiveComponent} from "./directive/components/directive.component";
 
 const routes: Routes = [
   {
@@ -18,7 +17,11 @@ const routes: Routes = [
   },
   {
     path: 'directive',
-    component: DirectiveComponent,
+    loadChildren: () => import('./directive/directive.module').then((m) => m.DirectiveModule)
+  },
+  {
+    path: 'requests',
+    loadChildren: () => import('./requests/requests.module').then((m) => m.RequestsModule)
   },
   {
     path: '**',

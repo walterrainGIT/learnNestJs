@@ -7,5 +7,24 @@ import { Component } from '@angular/core';
 })
 
 export class DirectiveComponent {
-  colors: string[] = ['red', 'blue', 'green', 'yellow'];
+  // ngFor
+
+  public colors: string[] = ['red', 'blue', 'green', 'yellow'];
+
+  // ngIf
+
+  public isShow = true;
+
+  //ngSwitch
+
+  public currentColor: string = this.colors[0];
+
+  // ngStyle
+
+  public elementStyle: any = {
+    color: 'red',
+    opacity: 0.5,
+  }
+
+  // ngClass
 }

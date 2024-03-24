@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DirectiveComponent } from './components/directive.component';
-
-
+import {CustomChangeColorDirective} from "./customDirective/custom-changeColor.directive";
+import { CustomIfDirective } from './customDirective/custom-if.directive';
+import { DirectivesRouting } from './directive-routings.module';
 
 @NgModule({
-  imports: [CommonModule],
-  exports: [DirectiveComponent],
-  declarations: [DirectiveComponent]
+  declarations: [DirectiveComponent, CustomChangeColorDirective, CustomIfDirective],
+  imports: [CommonModule, DirectivesRouting],
+  exports: [],
 })
 export class DirectiveModule { }

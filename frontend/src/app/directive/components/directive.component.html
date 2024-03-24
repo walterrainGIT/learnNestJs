@@ -1,5 +1,7 @@
-<div *ngFor="let color of colors; let i = index">
-  <span>{{ color }}</span>
-</div>
+<h2 [customChangeColorDirective]="colors">Директивы</h2>
 
+<span *customIf="isShow">{{ isShow }}</span>
 
+<br />
+
+<button (click)="isShow = !isShow">Click me!</button>

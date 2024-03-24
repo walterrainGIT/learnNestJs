@@ -18,7 +18,6 @@ import {DirectiveModule} from "./directive/directive.module";
     BrowserModule,
     AppRoutingModule,
     CalculatorModule,
-    DirectiveModule
   ],
   providers: [
     provideClientHydration()
