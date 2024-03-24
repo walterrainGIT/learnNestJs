@@ -1,8 +1,13 @@
 @if (posts$ | async; as posts) {
   @for (post of posts; track post.id) {
     <div class="post">
+      <span class="post__userId">Post id:{{ post.id }}</span>
       <span class="post__title">{{ post.title }}</span>
       <span class="post__content">{{ post.body }}</span>
+      <button class="post__btComment"
+        (click)="redirectTo(post.id)"
+      >Comment</button>
     </div>
   }
     }
+

@@ -5,6 +5,7 @@ import { PostItemComponent } from './components/post-item/post-item.component';
 import {RequestRouting} from "./requests-routings.module";
 import {PostService} from "./services/post.service";
 import { HttpClientModule} from "@angular/common/http";
+import {LifeCycleModule} from "../lifecycle/life-cycle.module";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HttpClientModule} from "@angular/common/http";
     CommonModule,
     RequestRouting,
     HttpClientModule,
+    LifeCycleModule,
   ],
   providers: [PostService],
 })

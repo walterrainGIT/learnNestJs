@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CalculatorComponent} from "./calculator/components/calculator.component";
 import {EmptyRouteComponent} from "./components/empty-route/empty-route.component";
+import {LifeCycleModule} from "./lifecycle/life-cycle.module";
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'directive',
     loadChildren: () => import('./directive/directive.module').then((m) => m.DirectiveModule)
+  },
+  {
+    path: 'lifeCycle',
+    loadChildren: () => import('./lifecycle/life-cycle.module').then((m) => m.LifeCycleModule)
   },
   {
     path: 'requests',

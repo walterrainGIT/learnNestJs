@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    selector: 'my-object-list',
+    selector: 'object-list',
     templateUrl: './object-list.component.html',
     styleUrl: './object-list.component.scss',
 })

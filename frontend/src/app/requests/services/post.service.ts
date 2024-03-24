@@ -9,6 +9,14 @@ export interface Post {
   body: string
 }
 
+export interface Comment {
+  postId: number,
+  id: number,
+  name: string,
+  email: string,
+  body: string
+}
+
 @Injectable()
 export class PostService {
 
@@ -16,5 +24,9 @@ export class PostService {
 
   public getPosts(): Observable<Post[]> {
     return this._httpClient.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
+  }
+
+  public getComment(postId: number): Observable<Comment[]> {
+    return this._httpClient.get<Comment[]>(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
   }
 }

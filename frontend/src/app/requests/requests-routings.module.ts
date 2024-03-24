@@ -8,6 +8,10 @@ const routes: Routes = [
     path: '',
     component: PostListComponent,
   },
+  {
+    path: `postItem/:id`,
+    component: PostItemComponent,
+  },
 ];
 
 @NgModule({

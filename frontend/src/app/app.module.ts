@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {CalculatorModule} from "./calculator/calculator.module";
 import { NavigationComponent} from './components/navigation/navigation.component';
 import { EmptyRouteComponent } from './components/empty-route/empty-route.component';
-import {DirectiveModule} from "./directive/directive.module";
 
 @NgModule({
   declarations: [

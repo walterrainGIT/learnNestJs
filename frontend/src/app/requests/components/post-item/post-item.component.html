@@ -1,1 +1,13 @@
-<p>post-item works!</p>
+@if (comments$ | async; as comments) {
+@for (comment of comments; track comment.id) {
+<div class="comment">
+  <span class="comment__name">{{ comment.name }}</span>
+  <span class="comment__email">{{ comment.email }}</span>
+  <span class="comment__body">{{ comment.body }}</span>
+</div>
+}
+  }
+
+<button class="post__btBack"
+        (click)="redirectTo()"
+>Back</button>
