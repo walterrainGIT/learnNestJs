@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./requests/requests.module').then((m) => m.RequestsModule)
   },
   {
+    path: 'pipes',
+    loadChildren: () => import('./pipes/pipes.module').then((m) => m.PipeModule)
+  },
+  {
     path: '**',
     component: EmptyRouteComponent,
   }
